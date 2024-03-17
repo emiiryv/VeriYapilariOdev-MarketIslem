@@ -1,9 +1,9 @@
 public class Node {
-    int data;
+    Urun urun;
     Node next;
 
-    public Node(int data) {
-        this.data = data;
+    public Node(Urun urun) {
+        this.urun = urun;
         this.next = null;
     }
 }

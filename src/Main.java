@@ -1,18 +1,35 @@
 public class Main {
     public static void main(String[] args) {
-        CategoryLinkedList categoryList = new CategoryLinkedList();
+        Panel panel = new Panel();
+        panel.start();
 
-        // Kategorileri ekle
-        categoryList.addCategory("A");
-        categoryList.addCategory("B");
-        categoryList.addCategory("C");
+        /*
+        // Kategoriler oluştur
+        Kategori gida = new Kategori("Gıda Ürünleri");
+        Kategori temizlik = new Kategori("Temizlik Ürünleri");
 
-        // Her bir kategoriye öğeler ekle
-        categoryList.addItem("A", 1);
-        categoryList.addItem("B", 2);
-        categoryList.addItem("C", 3);
+        // Ürünler oluştur
+        Urun elma = new Urun("001", "Elma");
+        Urun domates = new Urun("002", "Domates");
+        Urun sabun = new Urun("101", "Sabun");
+        Urun sampuan = new Urun("102", "Şampuan");
 
-        // Kategorilere göre öğeleri yazdır
-        categoryList.display();
+        // Ürünleri kategorilere ekle
+        gida.urunEkle(elma);
+        gida.urunEkle(domates);
+        temizlik.urunEkle(sabun);
+        temizlik.urunEkle(sampuan);
+
+        // Kategorileri yazdır
+        System.out.println(gida);
+        System.out.println(temizlik);
+
+        // Ürünü sil
+        temizlik.urunSil(sabun);
+
+        // Kategori güncellemelerini yazdır
+        System.out.println("Peynir silindikten sonra kahvaltı kategorisi:\n" + gida);
+
+         */
     }
 }
