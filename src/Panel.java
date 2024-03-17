@@ -40,10 +40,37 @@ public class Panel {
     }
 
     public void personelGirisi(){
+        Scanner input = new Scanner(System.in);
         while (true){
             System.out.println("1-Ürün Ekleme");
             System.out.println("2-Ürün Silme");
             System.out.println("3-Ürün Güncelleme");
+            try {
+                System.out.print("Seçiminiz:");
+                int secim = input.nextInt();
+
+                switch (secim) {
+                    case 1:
+                        //urun ekleme
+                        break;
+                    case 2:
+                        //urun silme
+                        break;
+                    case 3:
+                        //urun gıncelleme
+                        break;
+                    case 0:
+                        System.out.println("Çıkış Yapılıyor...");
+                        return;
+                    default:
+                        System.out.println("Hatalı bir seçim yaptınız.");
+                        break;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Hatalı bir giriş yaptınız. Lütfen geçerli bir sayı giriniz.");
+                input.nextLine();
+            }
+
         }
     }
 
