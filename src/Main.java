@@ -3,6 +3,10 @@ public class Main {
         Panel panel = new Panel();
         panel.start();
 
+        
+
+
+        
         /*
         // Kategoriler oluştur
         Kategori gida = new Kategori("Gıda Ürünleri");
