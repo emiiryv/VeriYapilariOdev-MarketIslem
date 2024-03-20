@@ -23,7 +23,7 @@ public class Panel {
                         personelGirisi();
                         break;
                     case 2:
-                        // Müşteri girişi işlemleri buraya gelebilir
+                        musteriGirisi();
                         break;
                     case 0:
                         System.out.println("Çıkış Yapılıyor...");
@@ -80,6 +80,45 @@ public class Panel {
                 input.nextLine();
             }
         }
+    }
+
+    public void musteriGirisi(){
+        Scanner input = new Scanner(System.in);
+        System.out.println("--------------------------------------");
+        System.out.println("Müşteri Işlemleri");
+        System.out.println("--------------------------------------");
+        while (true) {
+            System.out.println("1-Sepete Ürün Ekleme");
+            System.out.println("2-Sepetten Ürün Çıkarma");
+            System.out.println("3-Kasa Sırası Oluşturma");
+            System.out.println("0-Çıkış");
+            try {
+                System.out.print("Seçiminiz:");
+                int secim = input.nextInt();
+
+                switch (secim) {
+                    case 1:
+                        //sepete ürün ekleme
+                        break;
+                    case 2:
+                        //sepetten ürün çıkarma
+                        break;
+                    case 3:
+                        //kasa sırası oluşturma
+                        break;
+                    case 0:
+                        System.out.println("Çıkış Yapılıyor...");
+                        return;
+                    default:
+                        System.out.println("Hatalı bir seçim yaptınız.");
+                        break;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Hatalı bir giriş yaptınız. Lütfen geçerli bir sayı giriniz.");
+                input.nextLine();
+            }
+        }
+
     }
 
     public void urunEkle() {
