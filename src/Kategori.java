@@ -50,6 +50,27 @@ class Kategori {
         prev.next = temp.next;
         urunSayisi--;
     }
+    public void urunGuncelle(String barkodNo, String yeniAd) {
+        Node current = head;
+        while (current != null) {
+            if (current.urun.getBarkodNo().equals(barkodNo)) {
+                current.urun.setAd(yeniAd);
+                System.out.println("Ürün başarıyla güncellendi.");
+                return;
+            }
+            current = current.getNext();
+        }
+        System.out.println("Belirtilen barkod numarasına sahip bir ürün bulunamadı.");
+    }
+
+    public void urunleriListele() {
+        Node current = head;
+        while (current != null) {
+            System.out.println(current.urun);
+            current = current.next;
+        }
+    }
+
 
     @Override
     public String toString() {
@@ -63,4 +84,27 @@ class Kategori {
         return sb.toString();
     }
 
+    public String getAd() {
+        return ad;
+    }
+
+    public void setAd(String ad) {
+        this.ad = ad;
+    }
+
+    public Node getHead() {
+        return head;
+    }
+
+    public void setHead(Node head) {
+        this.head = head;
+    }
+
+    public int getUrunSayisi() {
+        return urunSayisi;
+    }
+
+    public void setUrunSayisi(int urunSayisi) {
+        this.urunSayisi = urunSayisi;
+    }
 }
