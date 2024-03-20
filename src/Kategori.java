@@ -84,6 +84,7 @@ class Kategori {
         return sb.toString();
     }
 
+
     public String getAd() {
         return ad;
     }
