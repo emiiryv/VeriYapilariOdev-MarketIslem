@@ -8,14 +8,34 @@ public class Panel {
     Kategori temizlik = new Kategori("Temizlik Ürünleri");
     Kategori teknoloji = new Kategori("Teknoloji Ürünleri");
 
-
     public Panel() {
         this.sepet = new Stack();
         this.gida = gida;
         this.temizlik = temizlik;
         this.teknoloji = teknoloji;
     }
-
+    public void marketUrunleriOlustur(){
+        Urun marketUrun1 = new Urun("1","Ekmek" );
+        gida.urunEkle(marketUrun1);
+        Urun marketUrun2 = new Urun("2","Su");
+        gida.urunEkle(marketUrun2);
+        Urun marketUrun3 = new Urun("3","Pirinç");
+        gida.urunEkle(marketUrun3);
+        Urun marketUrun4 = new Urun("4","Domates");
+        gida.urunEkle(marketUrun4);
+        Urun marketUrun5 = new Urun("5","Sabun");
+        temizlik.urunEkle(marketUrun5);
+        Urun marketUrun6 = new Urun("6","Şampuan");
+        temizlik.urunEkle(marketUrun6);
+        Urun marketUrun7 = new Urun("7","Çamaşır Suyu");
+        temizlik.urunEkle(marketUrun7);
+        Urun marketUrun8 = new Urun("8","Pil");
+        teknoloji.urunEkle(marketUrun8);
+        Urun marketUrun9 = new Urun("9","Ampul");
+        teknoloji.urunEkle(marketUrun9);
+        Urun marketUrun10 = new Urun("10","USB");
+        teknoloji.urunEkle(marketUrun10);
+    }
     public void start() {
         Scanner input = new Scanner(System.in);
         while (true) {
@@ -113,7 +133,7 @@ public class Panel {
                         sepeteUrunEkle();
                         break;
                     case 2:
-                        //sepetten ürün çıkarma
+                        sepetUrunCikar();
                         break;
                     case 3:
                         //sepeti listele
@@ -137,7 +157,6 @@ public class Panel {
     }
 
     public void sepeteUrunEkle() {
-
         Scanner input = new Scanner(System.in);
 
         System.out.println("1-" + gida);
@@ -146,31 +165,44 @@ public class Panel {
         System.out.print("Ürün kategorisi: ");
         int kategoriNumarasi = input.nextInt();
         String barkodNo;
+
         try {
             switch (kategoriNumarasi){
                 case 1:
                     input.nextLine();
                     System.out.print("Ürün barkod no: ");
                     barkodNo = input.nextLine();
-                    Urun gidaEklenenUrun = Urun.findUrunByBarkodNo(gida,barkodNo);
-                    sepet.push(gidaEklenenUrun);
-                    System.out.println("Ürün başarıyla eklendi.");
+                    if (Urun.findUrunByBarkodNo(gida, barkodNo) != null) {
+                        Urun gidaEklenenUrun = Urun.findUrunByBarkodNo(gida, barkodNo);
+                        sepet.push(gidaEklenenUrun);
+                        System.out.println("Ürün başarıyla eklendi.");
+                    } else {
+                        System.out.println("Bu barkod numarasına sahip bir ürün bulunamadı.");
+                    }
                     break;
                 case 2:
                     input.nextLine();
                     System.out.print("Ürün barkod no: ");
                     barkodNo = input.nextLine();
-                    Urun temizlikEklenenUrun = Urun.findUrunByBarkodNo(temizlik,barkodNo);
-                    sepet.push(temizlikEklenenUrun);
-                    System.out.println("Ürün başarıyla eklendi.");
+                    if (Urun.findUrunByBarkodNo(temizlik, barkodNo) != null) {
+                        Urun temizlikEklenenUrun = Urun.findUrunByBarkodNo(temizlik, barkodNo);
+                        sepet.push(temizlikEklenenUrun);
+                        System.out.println("Ürün başarıyla eklendi.");
+                    } else {
+                        System.out.println("Bu barkod numarasına sahip bir ürün bulunamadı.");
+                    }
                     break;
                 case 3:
                     input.nextLine();
                     System.out.print("Ürün barkod no: ");
                     barkodNo = input.nextLine();
-                    Urun teknolojiEklenenUrun = Urun.findUrunByBarkodNo(teknoloji,barkodNo);
-                    sepet.push(teknolojiEklenenUrun);
-                    System.out.println("Ürün başarıyla eklendi.");
+                    if (Urun.findUrunByBarkodNo(temizlik, barkodNo) != null) {
+                        Urun teknolojiEklenenUrun = Urun.findUrunByBarkodNo(teknoloji, barkodNo);
+                        sepet.push(teknolojiEklenenUrun);
+                        System.out.println("Ürün başarıyla eklendi.");
+                    } else {
+                        System.out.println("Bu barkod numarasına sahip bir ürün bulunamadı.");
+                    }
                     break;
                 default:
                     System.out.println("Hatalı bir seçim yaptınız.");
@@ -181,8 +213,21 @@ public class Panel {
             input.nextLine();
         }
         System.out.println("--------------------------------------");
+    }
 
 
+    public void sepetUrunCikar(){
+        System.out.println("--------------------------------------");
+        System.out.println("Sepete en son eklenen ürün çıkarılıyor...");
+
+        if (!sepet.isEmpty()){
+
+            sepet.pop();
+            //System.out.println(cikarilacakUrun + " Sepetten çıkarılmıştır.");
+        } else {
+            System.out.println("Sepette ürün olduğundan emin olunuz.");
+        }
+        System.out.println("--------------------------------------");
     }
 
 

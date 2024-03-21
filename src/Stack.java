@@ -13,6 +13,7 @@ public class Stack {
         }
         Urun poppedUrun = top.urun;
         top = top.next;
+        System.out.println(poppedUrun.getAd() + " Sepetten çıkarılmıştır.");
         return poppedUrun;
     }
 
@@ -20,6 +21,11 @@ public class Stack {
         return top == null;
     }
 
+    public Node getTop() {
+        return top;
+    }
 
-
+    public void setTop(Node top) {
+        this.top = top;
+    }
 }

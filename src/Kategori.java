@@ -9,6 +9,8 @@ class Kategori {
         this.urunSayisi = 0;
     }
 
+
+
     public void urunEkle(Urun urun) {
         Node newNode = new Node(urun);
         if (head == null) {
@@ -108,4 +110,7 @@ class Kategori {
     public void setUrunSayisi(int urunSayisi) {
         this.urunSayisi = urunSayisi;
     }
+
+
+
 }
