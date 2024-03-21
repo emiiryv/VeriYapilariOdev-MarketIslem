@@ -4,6 +4,5 @@ public class Main {
         panel.marketUrunleriOlustur();
         panel.musteriOlustur();
         panel.start();
-        //sırada kimse yoksa ilerletme
     }
 }
