@@ -16,6 +16,13 @@ public class Stack {
         System.out.println(poppedUrun.getAd() + " Sepetten çıkarılmıştır.");
         return poppedUrun;
     }
+    public void sepetiListele() {
+        Node current = top;
+        while (current != null) {
+            System.out.println(current.urun);
+            current = current.next;
+        }
+    }
 
     public boolean isEmpty() {
         return top == null;
