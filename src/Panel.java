@@ -71,7 +71,7 @@ public class Panel {
                         break;
                 }
             } catch (InputMismatchException e) {
-                System.out.println("Hatalı bir giriş yaptınız. Lütfen geçerli bir sayı giriniz.");
+                System.out.println(">>>Hatalı bir giriş yaptınız. Lütfen geçerli bir sayı giriniz.");
                 input.nextLine();
             }
 
@@ -114,7 +114,7 @@ public class Panel {
                         break;
                 }
             } catch (InputMismatchException e) {
-                System.out.println("Hatalı bir giriş yaptınız. Lütfen geçerli bir sayı giriniz.");
+                System.out.println(">>>Hatalı bir giriş yaptınız. Lütfen geçerli bir sayı giriniz.");
                 input.nextLine();
             }
         }
@@ -156,7 +156,7 @@ public class Panel {
                         break;
                 }
             } catch (InputMismatchException e) {
-                System.out.println("Hatalı bir giriş yaptınız. Lütfen geçerli bir sayı giriniz.");
+                System.out.println(">>>Hatalı bir giriş yaptınız. Lütfen geçerli bir sayı giriniz.");
                 input.nextLine();
             }
         }
@@ -179,6 +179,7 @@ public class Panel {
             try {
                 System.out.print("Seçiminiz:");
                 int secim = input.nextInt();
+                System.out.println("--------------------------------------");
                 switch (secim){
                     case 1:
                         System.out.print("Sıraya eklemek istediğiniz müşterinin adı:");
@@ -203,7 +204,7 @@ public class Panel {
                         break;
                     }
                 } catch (InputMismatchException e){
-                    System.out.println("Hatalı bir giriş yaptınız. Lütfen geçerli bir sayı giriniz.");
+                    System.out.println(">>>Hatalı bir giriş yaptınız. Lütfen geçerli bir sayı giriniz.");
                     input.nextLine();
                 }
         }
@@ -263,7 +264,7 @@ public class Panel {
                     break;
             }
         } catch (InputMismatchException e) {
-            System.out.println("Hatalı bir giriş yaptınız. Lütfen geçerli bir sayı giriniz.");
+            System.out.println(">>>Hatalı bir giriş yaptınız. Lütfen geçerli bir sayı giriniz.");
             input.nextLine();
         }
         System.out.println("--------------------------------------");
@@ -362,7 +363,7 @@ public class Panel {
                     break;
             }
         } catch (InputMismatchException e) {
-        System.out.println("Hatalı bir giriş yaptınız. Lütfen geçerli bir sayı giriniz.");
+            System.out.println(">>>Hatalı bir giriş yaptınız. Lütfen geçerli bir sayı giriniz.");
         input.nextLine();
     }
         System.out.println("--------------------------------------");
@@ -386,33 +387,41 @@ public class Panel {
                     input.nextLine();
                     System.out.print("Silinecek ürün barkod no: ");
                     String barkodNo = input.nextLine();
-
-                    gida.urunSil(Urun.findUrunByBarkodNo(gida,barkodNo));
-                    System.out.println("Ürün başarıyla silindi.");
+                        if (Urun.findUrunByBarkodNo(gida, barkodNo) != null) {
+                            gida.urunSil(Urun.findUrunByBarkodNo(gida,barkodNo));
+                            System.out.println("Ürün başarıyla silindi.");
+                        }else {
+                            System.out.println("Bu BarkodNo'ya ait bir gıda ürünü bulunamadı.");
+                        }
                     break;
                 case 2:
                     input.nextLine();
                     System.out.print("Silinecek ürün barkod no: ");
                     barkodNo = input.nextLine();
-
-
-                    temizlik.urunSil(Urun.findUrunByBarkodNo(temizlik,barkodNo));
-                    System.out.println("Ürün başarıyla silindi.");
+                    if (Urun.findUrunByBarkodNo(temizlik, barkodNo) != null) {
+                        temizlik.urunSil(Urun.findUrunByBarkodNo(temizlik,barkodNo));
+                        System.out.println("Ürün başarıyla silindi.");
+                    }else {
+                        System.out.println("Bu BarkodNo'ya ait bir temizlik ürünü bulunamadı.");
+                    }
                     break;
                 case 3:
                     input.nextLine();
                     System.out.print("Silinecek ürün barkod no: ");
                     barkodNo = input.nextLine();
-
-                    teknoloji.urunSil(Urun.findUrunByBarkodNo(teknoloji,barkodNo));
-                    System.out.println("Ürün başarıyla silindi.");
+                    if (Urun.findUrunByBarkodNo(teknoloji, barkodNo) != null) {
+                        teknoloji.urunSil(Urun.findUrunByBarkodNo(teknoloji,barkodNo));
+                        System.out.println("Ürün başarıyla silindi.");
+                    }else {
+                        System.out.println("Bu BarkodNo'ya ait bir teknoloji ürünü bulunamadı.");
+                    }
                     break;
                 default:
                     System.out.println("Hatalı bir seçim yaptınız.");
                     break;
             }
         } catch (InputMismatchException e) {
-            System.out.println("Hatalı bir giriş yaptınız. Lütfen geçerli bir sayı giriniz.");
+            System.out.println(">>>Hatalı bir giriş yaptınız. Lütfen geçerli bir sayı giriniz.");
             input.nextLine();
         }
         System.out.println("--------------------------------------");
@@ -455,42 +464,49 @@ public class Panel {
                     input.nextLine();
                     System.out.print("Güncellencek Ürün Barkod No: ");
                     String barkodNo = input.nextLine();
+                    if (Urun.findUrunByBarkodNo(gida,barkodNo) != null){
+                        System.out.print("Güncel Ürün Adı:");
+                        String guncelGidaAdi= input.nextLine();
 
-                    System.out.print("Güncel Ürün Adı:");
-                    String guncelGidaAdi= input.nextLine();
-
-                    gida.urunGuncelle(barkodNo,guncelGidaAdi);
+                        gida.urunGuncelle(barkodNo,guncelGidaAdi);
+                    }else {
+                        System.out.println("Bu BarkodNo'ya ait bir gıda ürünü bulunamadı.");
+                    }
 
                     break;
                 case 2:
                     input.nextLine();
                     System.out.print("Güncellencek Ürün Barkod No: ");
                     barkodNo = input.nextLine();
+                    if (Urun.findUrunByBarkodNo(temizlik,barkodNo) != null){
+                        System.out.print("Güncel Ürün Adı:");
+                        String guncelTemizlikAdi= input.nextLine();
 
-                    System.out.print("Güncel Ürün Adı:");
-                    String guncelTemizlikAdi= input.nextLine();
-
-
-                    temizlik.urunGuncelle(barkodNo,guncelTemizlikAdi);
+                        temizlik.urunGuncelle(barkodNo,guncelTemizlikAdi);
+                    }else {
+                        System.out.println("Bu BarkodNo'ya ait bir temizlik ürünü bulunamadı.");
+                    }
 
                     break;
                 case 3:
                     input.nextLine();
                     System.out.print("Güncellencek Ürün Barkod No: ");
                     barkodNo = input.nextLine();
+                    if (Urun.findUrunByBarkodNo(teknoloji,barkodNo) != null){
+                        System.out.print("Güncel Ürün Adı:");
+                        String guncelTeknolojiAdi= input.nextLine();
 
-                    System.out.print("Güncel Ürün Adı:");
-                    String guncelTeknolojiAdi= input.nextLine();
-
-                    teknoloji.urunGuncelle(barkodNo,guncelTeknolojiAdi);
-
+                        teknoloji.urunGuncelle(barkodNo,guncelTeknolojiAdi);
+                    }else {
+                        System.out.println("Bu BarkodNo'ya ait bir teknoloji ürünü bulunamadı.");
+                    }
                     break;
                 default:
                     System.out.println("Hatalı bir seçim yaptınız.");
                     break;
             }
         } catch (InputMismatchException e) {
-            System.out.println("Hatalı bir giriş yaptınız. Lütfen geçerli bir sayı giriniz.");
+            System.out.println(">>>Hatalı bir giriş yaptınız. Lütfen geçerli bir sayı giriniz.");
             input.nextLine();
         }
         System.out.println("--------------------------------------");
