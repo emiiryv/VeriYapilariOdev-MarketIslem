@@ -290,7 +290,9 @@ public class Panel {
         try {
 
             sepet.sepetiListele();
-
+            if (sepet.isEmpty()){
+                System.out.println("Sepet Boş.");
+            }
         }catch (NullPointerException e){
             System.out.println("Sepet Boş.");
         }
